@@ -55,6 +55,8 @@ public class MeshDataReader {
 		MeshData data = new MeshData();
 		MeshHeader header = new MeshHeader();
 		data.header = header;
+		/*
+		// MDF old 
 		header.magic = buf.getInt();
 		if (header.magic != MeshHeader.DT_NAVMESH_MAGIC) {
 			header.magic = IOUtils.swapEndianness(header.magic);
@@ -69,6 +71,15 @@ public class MeshDataReader {
 				throw new IOException("Invalid version");
 			}
 		}
+		*/
+		/*
+		// MDF new 
+		header.magic = buf.getInt();
+		header.version = buf.getInt();
+		*/
+		header.magic = buf.getInt();
+		header.version = buf.getInt();
+		
 		boolean cCompatibility = header.version == MeshHeader.DT_NAVMESH_VERSION;
 		header.x = buf.getInt();
 		header.y = buf.getInt();
