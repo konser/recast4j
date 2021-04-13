@@ -71,6 +71,8 @@ public class MeshSetReader {
 
     private NavMeshSetHeader readHeader(ByteBuffer bb, int maxVertsPerPoly) throws IOException {
         NavMeshSetHeader header = new NavMeshSetHeader();
+        /*
+        // MDF old
         header.magic = bb.getInt();
         if (header.magic != NavMeshSetHeader.NAVMESHSET_MAGIC) {
             header.magic = IOUtils.swapEndianness(header.magic);
@@ -79,6 +81,10 @@ public class MeshSetReader {
             }
             bb.order(bb.order() == ByteOrder.BIG_ENDIAN ? ByteOrder.LITTLE_ENDIAN : ByteOrder.BIG_ENDIAN);
         }
+        */
+        /*
+        // MDF new
+        */
         header.version = bb.getInt();
         if (header.version != NavMeshSetHeader.NAVMESHSET_VERSION && header.version != NavMeshSetHeader.NAVMESHSET_VERSION_RECAST4J_1
                 && header.version != NavMeshSetHeader.NAVMESHSET_VERSION_RECAST4J) {
